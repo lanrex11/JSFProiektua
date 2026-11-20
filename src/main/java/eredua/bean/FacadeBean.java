@@ -1,5 +1,6 @@
 package eredua.bean;
 
+
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
