@@ -79,7 +79,7 @@ Faces 4.0-ekin CDI-a beharrezkoa da.
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>14.0.0</version>
+			<version>15.0.19</version>
 			<classifier>jakarta</classifier>
 		</dependency>
 	</dependencies>

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="primefaces" xmlns:f="jakarta.faces.core"
+	xmlns:ui="jakarta.faces.facelets">
+
+<f:view>
+
+	<h:head>
+		<title>Oferta sortu</title>
+
+		<style>
+.eremua {
+	margin-bottom: 15px;
+}
+
+.eremua label {
+	padding: 15px;
+}
+
+#edukia {
+	display: flex;
+	gap: 200px;
+	margin: 30px;
+	align-items: flex-start;
+}
+</style>
+	</h:head>
+
+	<h:body>
+
+		<h:form>
+
+			<h1>Sortu eskaintza</h1>
+
+			<div id="edukia">
+
+				<!--Produktua -->
+				<div id="datuak">
+					<h2>Produktuaren informazioa</h2>
+					<!-- Titulua -->
+					<div class="eremua">
+						<h:outputLabel for="titulua" value="Titulua:" />
+						<h:inputText id="titulua" />
+					</div>
+
+					<!-- Deskripzioa -->
+					<div class="eremua">
+						<h:outputLabel for="deskripzioa" value="Deskripzioa:" />
+						<h:inputTextarea id="deskripzioa"
+							style="width: 300px; height: 80px;" />
+					</div>
+
+					<!-- Prezioa -->
+					<div class="eremua">
+						<h:outputLabel for="prezioa" value="Prezioa:" />
+						<h:inputText id="prezioa" type="number" />
+					</div>
+
+					<!-- Egoera -->
+					<div class="eremua">
+						<h:outputLabel for="egoera" value="Egoera:" />
+						<h:selectOneMenu id="egoera" value="#{createSale.egoera}">
+
+							<f:selectItems value="#{createSale.egoerak}" />
+
+						</h:selectOneMenu>
+					</div>
+
+					<!-- Irudia -->
+					<div class="eremua">
+						<h:outputLabel value="Irudia:" />
+						<p:fileUpload id="argazkiaIgo" value="#{createSale.file}"
+							mode="simple" skinSimple="true" accept="image/*"
+							allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+					</div>
+				</div>
+
+				<!-- EGUTEGIA -->
+				<div id="egutegia">
+					<h2>Egutegia</h2>
+
+					<p:datePicker id="data" value="#{createSale.data}"
+						pattern="yyyy/MM/dd" inline="true" mindate="#{createSale.gaur}">
+						<p:ajax event="dateSelect" listener="#{createSale.onDateSelect}"
+							update="mezuak"></p:ajax>
+
+					</p:datePicker>
+
+
+				</div>
+
+			</div>
+
+
+			<!-- Aquí añadiremos los botones inferiores -->
+
+			<h:messages id="mezuak" />
+
+		</h:form>
+
+	</h:body>
+
+</f:view>
+
+</html>

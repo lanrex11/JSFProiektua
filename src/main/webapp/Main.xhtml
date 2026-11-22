@@ -1,22 +1,24 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
-	xmlns:f="jakarta.faces.core" xmlns:p="http://primefaces.org/ui" xmlns:ui="jakarta.faces.facelets">
+	xmlns:f="jakarta.faces.core" xmlns:ui="jakarta.faces.facelets">
+
 <f:view>
 	<h:head>
-		<title>Market JSF</title>
-		<h:outputStylesheet library="css" name="style.css" />
+		<title>Market aplikazioa</title>
 	</h:head>
 	<h:body>
-		<h:form styleClass="hasiera-form">
-			<h1>Market JSF aplikazioa</h1>
-			<h3>Aukeratu egin nahi duzuna:</h3>
-			
-			<div class="botoiak">
-				<p:button styleClass="botoia" value="Eskaintza bat sortu" outcome="SortuEskaintza"/>
-				<p:button styleClass="botoia" value="Eskaintzak bilatu" outcome="BilatuEskaintzak"/>
+		<h:messages id="mezuak" style="color:blue" />
+		<h:form>
+			<div style="text-align: center; margin-top: 100px;">
+
+				<h1>Market aplikazioa</h1>
+				<h3>Aukeratu zer egin nahi duzun:</h3>
+				<h:commandButton value="Ikusi ofertak" action="ofertak"
+					style="margin:10px;" />
+				<h:commandButton value="Sortu eskaintza" action="sortuOferta"
+					style="margin:10px;" />
 			</div>
-			<p:messages id="mezuak" styleClass="mezuak"/>
-			
 		</h:form>
 	</h:body>
 </f:view>
