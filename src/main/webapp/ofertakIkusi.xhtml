@@ -13,9 +13,11 @@
 	<h:body>
 
 		<h:form>
-			<div id=eskaintzakBilatu>
-			
-			
+			<div id="eskaintzakBilatu">
+				<h:inputText id="filtroa" value="#{bilatuEskaintza.filtro}" />
+				<p:commandButton value="Eskaintza sortu"
+					styleClass="p-button-raised" action="#{bilatuEskaintza.querySales}"
+					ajax="false" />
 			</div>
 			<div class="card">
 				<!-- sale aldagaia definitu p:column-etan -->
@@ -31,7 +33,8 @@
 
 					<p:column headerText="Prezioa">
 						<h:outputText value="#{sale.price}">
-							<f:convertNumber type="currency" currencySymbol="€" locale="es_ES"/>
+							<f:convertNumber type="currency" currencySymbol="€"
+								locale="es_ES" />
 						</h:outputText>
 					</p:column>
 
