@@ -11,7 +11,6 @@
 	</h:head>
 
 	<h:body>
-
 		<h:form>
 			<div id="eskaintzakBilatu">
 				<h:inputText id="filtroa" value="#{bilatuEskaintza.filtro}" />
@@ -22,7 +21,12 @@
 			<div class="card">
 				<!-- sale aldagaia definitu p:column-etan -->
 				<p:dataTable var="sale" value="#{bilatuEskaintza.sales}"
+					selectionMode="single"  
+					rowKey="#{sale.saleNumber}"
 					emptyMessage="Ez da eskaintzarik aurkitu">
+
+					<p:ajax event="rowDblselect"
+						listener="#{bilatuEskaintza.onRowDblSelect}" />
 					<f:facet name="header">
                		 Eskaintzan dauden produktuak
           			</f:facet>
@@ -39,7 +43,9 @@
 					</p:column>
 
 					<p:column headerText="Publikazio data">
-						<h:outputText value="#{sale.publicationDate}" />
+						<h:outputText value="#{sale.publicationDate}">
+							<f:convertDateTime pattern="yyyy/MM/dd" />
+						</h:outputText>
 					</p:column>
 
 					<f:facet name="footer">
