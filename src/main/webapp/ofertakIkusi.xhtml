@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="primefaces" xmlns:f="jakarta.faces.core"
+	xmlns:ui="jakarta.faces.facelets">
+
+<f:view>
+
+	<h:head>
+		<title>Ofertak Ikusi</title>
+	</h:head>
+
+	<h:body>
+
+		<h:form>
+			<div id=eskaintzakBilatu>
+			
+			
+			</div>
+			<div class="card">
+				<!-- sale aldagaia definitu p:column-etan -->
+				<p:dataTable var="sale" value="#{bilatuEskaintza.sales}"
+					emptyMessage="Ez da eskaintzarik aurkitu">
+					<f:facet name="header">
+               		 Eskaintzan dauden produktuak
+          			</f:facet>
+
+					<p:column headerText="Titulua">
+						<h:outputText value="#{sale.title}" />
+					</p:column>
+
+					<p:column headerText="Prezioa">
+						<h:outputText value="#{sale.price}">
+							<f:convertNumber type="currency" currencySymbol="€" locale="es_ES"/>
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Publikazio data">
+						<h:outputText value="#{sale.publicationDate}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<span class="font-bold">Guztira
+							#{bilatuEskaintza.sales.size()} oferta daude.</span>
+					</f:facet>
+				</p:dataTable>
+			</div>
+		</h:form>
+	</h:body>
+
+</f:view>
+
+</html>
