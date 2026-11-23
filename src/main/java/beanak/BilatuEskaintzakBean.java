@@ -1,4 +1,4 @@
-package eredua.bean;
+package beanak;
 
 import java.io.Serializable;
 import java.util.List;

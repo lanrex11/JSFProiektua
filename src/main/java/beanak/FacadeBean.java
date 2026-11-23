@@ -1,4 +1,4 @@
-package eredua.bean;
+package beanak;
 
 
 import businessLogic.BLFacade;
