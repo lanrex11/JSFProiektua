@@ -2,11 +2,16 @@ package beanak;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import businessLogic.BLFacade;
 import domain.Sale;
@@ -60,9 +65,36 @@ public class BilatuEskaintzakBean implements Serializable {
 	    //Gertaera altxatu duen Sale lortu
 		this.selectedSale = event.getObject(); 
 	    
-		//birbidaltzeko url prestatu: BASE(getRequestContextPath) + ofertaXehetasunak + parametro:id
+		//birbidaltzeko url prestatu: BASE(getRequestContextPath) + ofertaXehetasunak 
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 	    ec.redirect(ec.getRequestContextPath() + "/ofertaXehetasunak.xhtml");
 	}
+	
+	
+	
+	public StreamedContent getArgazkia() {
+	    if (selectedSale == null || selectedSale.getFile() == null) {
+	        return null;
+	    }
+	    //Sale klaseak definitu BASE_PATH hau
+	    Path path = Paths.get("src/main/resources/images/", selectedSale.getFile());
+	    System.out.println(path.toAbsolutePath() + " existe: " + Files.exists(path));
+	    if (!Files.exists(path)) {
+	        return null;
+	    }
+	    return DefaultStreamedContent.builder()
+	            .contentType("image/png")
+	            .stream(() -> {
+	                try {
+	                    return Files.newInputStream(path);
+	                } catch (IOException e) {
+	                    throw new RuntimeException(e);
+	                }
+	            })
+	            .build();
+	}
+	
+	
+
 
 }

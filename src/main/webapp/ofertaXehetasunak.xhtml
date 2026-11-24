@@ -17,34 +17,49 @@
 
 			<h2>Produktuaren informazioa</h2>
 
-			<div>
-				<h:outputLabel value="Titulua:" />
-				<h:outputText value="#{bilatuEskaintza.selectedSale.title}" />
-			</div>
+			<div style="display: flex; gap: 100px; align-items: flex-start;">
 
-			<div>
-				<h:outputLabel value="Deskripzioa:" />
-				<h:outputText value="#{bilatuEskaintza.selectedSale.description}" />
-			</div>
+				<!-- EZKERRA: datuak -->
+				<div>
+					<div>
+						<h:outputLabel value="Titulua:" />
+						<h:outputText value="#{bilatuEskaintza.selectedSale.title}" />
+					</div>
 
-			<div>
-				<h:outputLabel value="Prezioa: " />
-				<h:outputText value="#{bilatuEskaintza.selectedSale.price}">
-					<f:convertNumber type="currency" currencySymbol="€" locale="es_ES" />
-				</h:outputText>
-			</div>
+					<div>
+						<h:outputLabel value="Deskripzioa:" />
+						<h:outputText value="#{bilatuEskaintza.selectedSale.description}" />
+					</div>
 
-			<div>
-				<h:outputLabel value="Egoera:" />
-				<h:outputText value="#{bilatuEskaintza.selectedSale.status}" />
-			</div>
+					<div>
+						<h:outputLabel value="Prezioa: " />
+						<h:outputText value="#{bilatuEskaintza.selectedSale.price}">
+							<f:convertNumber type="currency" currencySymbol="€"
+								locale="es_ES" />
+						</h:outputText>
+					</div>
 
-			<div>
-				<h:outputLabel value="Publikazio data:" />
-				<h:outputText
-					value="#{bilatuEskaintza.selectedSale.publicationDate}">
-					<f:convertDateTime pattern="yyyy/MM/dd" />
-				</h:outputText>
+					<div>
+						<h:outputLabel value="Egoera:" />
+						<h:outputText value="#{bilatuEskaintza.selectedSale.status}" />
+					</div>
+
+					<div>
+						<h:outputLabel value="Publikazio data:" />
+						<h:outputText
+							value="#{bilatuEskaintza.selectedSale.publicationDate}">
+							<f:convertDateTime pattern="yyyy/MM/dd" />
+						</h:outputText>
+					</div>
+				</div>
+
+				<!-- ESKUINA: irudia -->
+				<div>
+					<p:graphicImage value="#{bilatuEskaintza.argazkia}" cache="false"
+						style="max-width: 300px;"
+						rendered="#{bilatuEskaintza.selectedSale.file != null}" />
+				</div>
+
 			</div>
 
 		</h:panelGroup>

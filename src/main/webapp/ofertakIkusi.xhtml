@@ -21,8 +21,7 @@
 			<div class="card">
 				<!-- sale aldagaia definitu p:column-etan -->
 				<p:dataTable var="sale" value="#{bilatuEskaintza.sales}"
-					selectionMode="single"  
-					rowKey="#{sale.saleNumber}"
+					selectionMode="single" rowKey="#{sale.saleNumber}"
 					emptyMessage="Ez da eskaintzarik aurkitu">
 
 					<p:ajax event="rowDblselect"
@@ -37,7 +36,8 @@
 
 					<p:column headerText="Prezioa">
 						<h:outputText value="#{sale.price}">
-							<f:convertNumber type="currency" currencySymbol="€" locale="es_ES" />
+							<f:convertNumber type="currency" currencySymbol="€"
+								locale="es_ES" />
 						</h:outputText>
 					</p:column>
 
@@ -53,6 +53,8 @@
 					</f:facet>
 				</p:dataTable>
 			</div>
+
+
 		</h:form>
 	</h:body>
 

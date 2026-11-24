@@ -118,9 +118,9 @@ public class CreateSaleBean implements Serializable {
 			// Fitxaterik ez badago edo hutsa bada --> NOP
 			if (file != null && file.getSize() > 0) {
 
-				// Fitxategi tempora sortu
+				// Fitxategi tempora sortu --> path SEak erabaki
+				//Benetazko fitxategiaren path Sale klasean definitzen da
 				Path path = Files.createTempFile("argazkia-", ".jpg");
-
 				// Edukia sortutako fitxategian kopiatu
 				try (InputStream input = file.getInputStream()) {
 					Files.copy(input, path, StandardCopyOption.REPLACE_EXISTING);
