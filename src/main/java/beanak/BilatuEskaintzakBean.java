@@ -62,9 +62,7 @@ public class BilatuEskaintzakBean implements Serializable {
 	    
 		//birbidaltzeko url prestatu: BASE(getRequestContextPath) + ofertaXehetasunak + parametro:id
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-	    //ec.redirect(ec.getRequestContextPath() + "/ofertaXehetasunak.xhtml?id=" + selectedSale.getSaleNumber());
-	    System.out.println(ec.getRequestContextPath() + "/ofertaXehetasunak.xhtml?id=" + selectedSale.getSaleNumber());
-
+	    ec.redirect(ec.getRequestContextPath() + "/ofertaXehetasunak.xhtml");
 	}
 
 }

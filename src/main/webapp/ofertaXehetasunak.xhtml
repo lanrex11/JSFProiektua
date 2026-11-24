@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:p="primefaces" xmlns:f="jakarta.faces.core">
+
+<f:view>
+
+	<h:head>
+		<title>Eskaintzaren xehetasunak</title>
+	</h:head>
+
+	<h:body>
+
+		<h1>Eskaintzaren xehetasunak</h1>
+		<!-- rendered false denean elementua ez da agertuko orrian:-->
+		<!-- div bakoitzen rendered ez jartzeko  h:panelGroup batean sartuko dugu-->
+		<h:panelGroup rendered="#{bilatuEskaintza.selectedSale != null}">
+
+			<h2>Produktuaren informazioa</h2>
+
+			<div>
+				<h:outputLabel value="Titulua:" />
+				<h:outputText value="#{bilatuEskaintza.selectedSale.title}" />
+			</div>
+
+			<div>
+				<h:outputLabel value="Deskripzioa:" />
+				<h:outputText value="#{bilatuEskaintza.selectedSale.description}" />
+			</div>
+
+			<div>
+				<h:outputLabel value="Prezioa: " />
+				<h:outputText value="#{bilatuEskaintza.selectedSale.price}">
+					<f:convertNumber type="currency" currencySymbol="€" locale="es_ES" />
+				</h:outputText>
+			</div>
+
+			<div>
+				<h:outputLabel value="Egoera:" />
+				<h:outputText value="#{bilatuEskaintza.selectedSale.status}" />
+			</div>
+
+			<div>
+				<h:outputLabel value="Publikazio data:" />
+				<h:outputText
+					value="#{bilatuEskaintza.selectedSale.publicationDate}">
+					<f:convertDateTime pattern="yyyy/MM/dd" />
+				</h:outputText>
+			</div>
+
+		</h:panelGroup>
+
+		<h:outputText value="Ez da eskaintzarik hautatu."
+			rendered="#{bilatuEskaintza.selectedSale == null}" />
+
+		<div>
+			<p:button value="Atzera" outcome="ofertakIkusi" />
+		</div>
+
+	</h:body>
+
+</f:view>
+
+</html>
